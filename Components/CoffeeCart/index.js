@@ -21,13 +21,9 @@ class CoffeeCart extends Component {
     ]
   };
   render() {
-    let items = this.state.items;
-    let cartItems;
-    if (items) {
-      cartItems = items.map((item, index) => (
-        <CartItem item={item} key={index} />
-      ));
-    }
+    const cartItems = this.state.items.map(item => (
+      <CartItem item={item} key={`${item.drink} ${item.option}`} />
+    ));
 
     return (
       <List>
