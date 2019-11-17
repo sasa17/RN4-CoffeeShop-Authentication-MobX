@@ -56,12 +56,12 @@ class CoffeeDetail extends Component {
               <Thumbnail bordered source={coffeeshop.img} />
             </Right>
           </ListItem>
-          <ListItem style={{ borderBottomWidth: 0 }}>
+          <ListItem style={styles.listStyle}>
             <Left>
               <Picker
                 note
                 mode="dropdown"
-                style={{ width: 150 }}
+                style={styles.picker}
                 selectedValue={this.state.drink}
                 onValueChange={this.changeDrink}
               >
@@ -74,7 +74,7 @@ class CoffeeDetail extends Component {
               <Picker
                 note
                 mode="dropdown"
-                style={{ width: 150 }}
+                style={styles.picker}
                 selectedValue={this.state.option}
                 onValueChange={this.changeOption}
               >

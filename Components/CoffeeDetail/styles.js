@@ -1,6 +1,9 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
+  listStyle: {
+    borderBottomWidth: 0
+  },
   text: {
     color: "black",
     fontSize: 15,
@@ -30,6 +33,9 @@ const styles = StyleSheet.create({
   },
   item: {
     color: "white"
+  },
+  picker: {
+    width: 150
   }
 });
 

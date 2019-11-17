@@ -10,10 +10,12 @@ import cafes from "./list";
 import CoffeeItem from "./CoffeeItem";
 
 const CoffeeList = () => {
-  const cafeList = cafes.map(cafe => <CoffeeItem cafe={cafe} key={cafe.id} />);
+  const coffeeshopList = coffeeshops.map(coffeeshop => (
+    <CoffeeItem coffeeshop={coffeeshop} key={coffeeshop.id} />
+  ));
   return (
     <Content>
-      <List>{cafeList}</List>
+      <List>{coffeeshopList}</List>
     </Content>
   );
 };

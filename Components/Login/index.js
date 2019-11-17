@@ -14,18 +14,18 @@ import {
   Content,
   Header
 } from "native-base";
+import styles from "../HomePage/styles";
 
 class Login extends Component {
   render() {
     return (
       <Content>
-        <Header transparent />
         <List>
-          <ListItem style={{ borderBottomWidth: 0 }}>
+          <ListItem style={styles.listStyle}>
             <Body>
               <Form>
                 <Body>
-                  <Label style={{ color: "white" }}>Username</Label>
+                  <Label style={styles.label}>Username</Label>
                 </Body>
                 <Item
                   rounded
@@ -38,11 +38,15 @@ class Login extends Component {
                   <Input autoCorrect={false} autoCapitalize="none" />
                 </Item>
                 <Body>
-                  <Label style={{ color: "white" }}>Password</Label>
+                  <Label style={styles.label}>Password</Label>
                 </Body>
                 <Item
                   rounded
-                  style={{ backgroundColor: "white", marginTop: 10 }}
+                  style={{
+                    backgroundColor: "white",
+                    marginTop: 10,
+                    marginBottom: 10
+                  }}
                 >
                   <Input
                     autoCorrect={false}
@@ -60,9 +64,6 @@ class Login extends Component {
             <Text>Register</Text>
           </Button>
         </List>
-        <Body>
-          <Label style={{ color: "red", opacity: 0.6 }} />
-        </Body>
       </Content>
     );
   }
