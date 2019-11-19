@@ -37,4 +37,8 @@ class CoffeeCart extends Component {
   }
 }
 
+CoffeeCart.navigationOptions = {
+  title: "Cart"
+};
+
 export default CoffeeCart;

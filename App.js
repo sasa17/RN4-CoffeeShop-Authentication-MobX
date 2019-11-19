@@ -2,10 +2,7 @@ import React, { Component } from "react";
 import { Spinner, Header, Container } from "native-base";
 
 // Components
-import Login from "./Components/Authentication/Login";
-import CoffeeList from "./Components/CoffeeList";
-import CoffeeDetail from "./Components/CoffeeDetail";
-import CoffeeCart from "./Components/CoffeeCart";
+import AppContainer from "./Navigation";
 
 export default class App extends Component {
   state = {
@@ -26,8 +23,7 @@ export default class App extends Component {
     }
     return (
       <Container>
-        <Header />
-        <CoffeeCart />
+        <AppContainer />
       </Container>
     );
   }
