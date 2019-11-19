@@ -4,7 +4,7 @@ import React from "react";
 import { List, Content } from "native-base";
 
 // Store
-import cafes from "./list";
+import coffeeshops from "./list";
 
 // Component
 import CoffeeItem from "./CoffeeItem";

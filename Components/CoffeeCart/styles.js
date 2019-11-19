@@ -5,17 +5,17 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0
   },
   drink: {
-    color: "white",
+    color: "#42566E",
     marginLeft: 16
   },
   option: {
     marginLeft: 16
   },
   quantity: {
-    color: "white"
+    color: "#42566E"
   },
   removeItem: {
-    color: "white",
+    color: "#42566E",
     fontSize: 21
   }
 });

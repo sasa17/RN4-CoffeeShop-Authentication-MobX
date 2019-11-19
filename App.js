@@ -1,8 +1,11 @@
 import React, { Component } from "react";
-import { Spinner } from "native-base";
+import { Spinner, Header, Container } from "native-base";
 
 // Components
 import Login from "./Components/Authentication/Login";
+import CoffeeList from "./Components/CoffeeList";
+import CoffeeDetail from "./Components/CoffeeDetail";
+import CoffeeCart from "./Components/CoffeeCart";
 
 export default class App extends Component {
   state = {
@@ -21,6 +24,11 @@ export default class App extends Component {
     if (this.state.loading) {
       return <Spinner color="#132D4B" />;
     }
-    return <Login />;
+    return (
+      <Container>
+        <Header />
+        <CoffeeCart />
+      </Container>
+    );
   }
 }
