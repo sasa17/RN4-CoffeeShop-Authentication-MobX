@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Spinner } from "native-base";
-import HomePage from "./Components/HomePage";
+
+// Components
+import Login from "./Components/Authentication/Login";
 
 export default class App extends Component {
   state = {
@@ -17,8 +19,8 @@ export default class App extends Component {
 
   render() {
     if (this.state.loading) {
-      return <Spinner color="white" />;
+      return <Spinner color="#132D4B" />;
     }
-    return <HomePage />;
+    return <Login />;
   }
 }

@@ -26,20 +26,17 @@ class CoffeeDetail extends Component {
     option: "Small"
   };
 
-  changeDrink = value => {
+  changeDrink = value =>
     this.setState({
       drink: value
     });
-  };
 
-  changeOption = value => {
+  changeOption = value =>
     this.setState({
       option: value
     });
-  };
 
   render() {
-    if (!coffeeshops) return <Content />;
     const coffeeshop = coffeeshops[0];
     return (
       <Content>
