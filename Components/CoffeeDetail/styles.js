@@ -1,8 +1,19 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
+  addButton: {
+    alignSelf: "center",
+    backgroundColor: "rgb(20,90,100)",
+    width: 150
+  },
+  card: {
+    marginTop: 100
+  },
   listStyle: {
     borderBottomWidth: 0
+  },
+  numericInput: {
+    alignItems: "center"
   },
   text: {
     color: "black",
