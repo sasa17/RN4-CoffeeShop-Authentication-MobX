@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Spinner, Header, Container } from "native-base";
+import { Spinner, Container } from "native-base";
 
 // Components
 import AppContainer from "./Navigation";

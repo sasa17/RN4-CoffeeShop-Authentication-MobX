@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+
 import NumericInput from "react-native-numeric-input";
 
 // NativeBase Components
+import { Alert } from "react-native";
 import {
   Body,
   Button,
@@ -19,14 +21,16 @@ import {
 // Style
 import styles from "./styles";
 
-//List
-import coffeeshops from "../CoffeeList/list";
+// Components
 import CartButton from "../Buttons/CartButton";
+import coffeeStore from "../../Stores/coffeeStore";
+import cartStore from "../../Stores/cartStore";
+import authStore from "../../Stores/authStore";
 
 class CoffeeDetail extends Component {
   state = {
-    drink: "Cappuccino",
-    option: "Small",
+    drink: "",
+    option: "",
     quantity: 1
   };
 
@@ -40,9 +44,30 @@ class CoffeeDetail extends Component {
       option: value
     });
 
+  handleAdd = () => {
+    if (authStore.user) cartStore.addItemToCart(this.state);
+    else {
+      Alert.alert(
+        "You're not logged in!",
+        "Log in to add items to the cart",
+        [
+          {
+            text: "Mabi",
+            style: "cancel"
+          },
+          {
+            text: "Log in",
+            onPress: () => this.props.navigation.navigate("Login")
+          }
+        ],
+        { cancelable: true }
+      );
+    }
+  };
+
   render() {
     const coffeeshopID = this.props.navigation.getParam("coffeeshopID");
-    const coffeeshop = coffeeshops.find(
+    const coffeeshop = coffeeStore.coffeeshops.find(
       coffeeshop => coffeeshopID === coffeeshop.id
     );
     return (
@@ -58,7 +83,7 @@ class CoffeeDetail extends Component {
               </Left>
               <Body />
               <Right>
-                <Thumbnail bordered source={coffeeshop.img} />
+                <Thumbnail bordered source={{ uri: coffeeshop.img }} />
               </Right>
             </CardItem>
             <CardItem>
@@ -68,6 +93,7 @@ class CoffeeDetail extends Component {
                   mode="dropdown"
                   style={styles.picker}
                   onValueChange={this.changeDrink}
+                  selectedValue={this.state.drink}
                   placeholder="Choose Drink"
                 >
                   <Picker.Item label="Cappuccino" value="Cappuccino" />
@@ -81,6 +107,7 @@ class CoffeeDetail extends Component {
                   mode="dropdown"
                   style={styles.picker}
                   onValueChange={this.changeOption}
+                  selectedValue={this.state.option}
                   placeholder="Choose Option"
                 >
                   <Picker.Item label="Small" value="Small" />
@@ -99,7 +126,7 @@ class CoffeeDetail extends Component {
               </Body>
 
               <Right>
-                <Button full style={styles.addButton}>
+                <Button full style={styles.addButton} onPress={this.handleAdd}>
                   <Text>Add</Text>
                 </Button>
               </Right>
