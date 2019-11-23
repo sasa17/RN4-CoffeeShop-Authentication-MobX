@@ -11,8 +11,9 @@ class CartStore {
     else this.items.push(item);
   };
 
-  removeItemFromCart = item =>
-    (this.items = this.items.filter(_item => _item !== item));
+  removeItemFromCart = item => {
+    this.items = this.items.filter(_item => _item !== item);
+  };
 
   checkoutCart = () => {
     this.items = [];

@@ -23,9 +23,10 @@ import styles from "./styles";
 
 // Components
 import CartButton from "../Buttons/CartButton";
+
+// Stores
 import coffeeStore from "../../Stores/coffeeStore";
 import cartStore from "../../Stores/cartStore";
-import authStore from "../../Stores/authStore";
 
 class CoffeeDetail extends Component {
   state = {
@@ -34,36 +35,13 @@ class CoffeeDetail extends Component {
     quantity: 1
   };
 
-  changeDrink = value =>
-    this.setState({
-      drink: value
-    });
+  changeDrink = value => this.setState({ drink: value });
 
-  changeOption = value =>
-    this.setState({
-      option: value
-    });
+  changeOption = value => this.setState({ option: value });
 
-  handleAdd = () => {
-    if (authStore.user) cartStore.addItemToCart(this.state);
-    else {
-      Alert.alert(
-        "You're not logged in!",
-        "Log in to add items to the cart",
-        [
-          {
-            text: "Mabi",
-            style: "cancel"
-          },
-          {
-            text: "Log in",
-            onPress: () => this.props.navigation.navigate("Login")
-          }
-        ],
-        { cancelable: true }
-      );
-    }
-  };
+  changeQuantity = value => this.setState({ quantity: value });
+
+  handleAdd = () => cartStore.addItemToCart(this.state);
 
   render() {
     const coffeeshopID = this.props.navigation.getParam("coffeeshopID");
@@ -120,7 +98,7 @@ class CoffeeDetail extends Component {
               <Body style={styles.numericInput}>
                 <NumericInput
                   value={this.state.value}
-                  onChange={quantity => this.setState({ quantity })}
+                  onChange={this.changeQuantity}
                   initValue={1}
                 />
               </Body>
