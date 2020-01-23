@@ -5,11 +5,13 @@ import { observer } from "mobx-react";
 import { List, Content, Spinner } from "native-base";
 
 // Stores
+import authStore from "../../Stores/authStore";
 import coffeeStore from "../../Stores/coffeeStore";
 
 // Component
 import CoffeeItem from "./CoffeeItem";
 import CartButton from "../Buttons/CartButton";
+import Logout from "../Buttons/Logout";
 
 const CoffeeList = () => {
   if (coffeeStore.loading) return <Spinner />;
@@ -19,6 +21,7 @@ const CoffeeList = () => {
   return (
     <Content>
       <List>{coffeeshopList}</List>
+      {authStore.user && <Logout />}
     </Content>
   );
 };

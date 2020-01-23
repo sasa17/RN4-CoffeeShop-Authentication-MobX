@@ -7,17 +7,26 @@ import { Icon, Text, Button } from "native-base";
 import cartStore from "../../Stores/cartStore";
 
 const CartButton = ({ navigation }) => {
-  const handlePress = () => navigation.navigate("CartScreen");
+  const handlePress = () => {
+    if (authStore.user) navigation.navigate("CartScreen");
+    else navigation.navigate("Login");
+  };
 
   return (
     <Button onPress={handlePress} transparent light>
-      <Text style={{ color: "white" }}>{cartStore.quantity}</Text>
-      <Icon
-        name="shoppingcart"
-        type="AntDesign"
-        style={{ color: "white" }}
-        onPress={handlePress}
-      />
+      {authStore.user ? (
+        <>
+          <Text style={{ color: "white" }}>{cartStore.quantity}</Text>
+          <Icon
+            name="shoppingcart"
+            type="AntDesign"
+            style={{ color: "white" }}
+            onPress={() => navigation.navigate("CartScreen")}
+          />
+        </>
+      ) : (
+        <Icon type="MaterialCommunityIcons" name="login" />
+      )}
     </Button>
   );
 };

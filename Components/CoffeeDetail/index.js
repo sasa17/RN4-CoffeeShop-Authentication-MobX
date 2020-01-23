@@ -41,7 +41,26 @@ class CoffeeDetail extends Component {
 
   changeQuantity = value => this.setState({ quantity: value });
 
-  handleAdd = () => cartStore.addItemToCart(this.state);
+  handleAdd = () => {
+    if (authStore.user) cartStore.addItemToCart(this.state);
+    else {
+      Alert.alert(
+        "Not Logged in!",
+        "Log in is boring",
+        [
+          {
+            text: "Log in",
+            onPress: () => this.props.navigation.navigate("Login")
+          },
+          {
+            text: "Mabi",
+            style: "cancel"
+          }
+        ],
+        { cancelable: true }
+      );
+    }
+  };
 
   render() {
     const coffeeshopID = this.props.navigation.getParam("coffeeshopID");
