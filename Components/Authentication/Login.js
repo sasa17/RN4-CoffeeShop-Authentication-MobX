@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import authStore from "../../Stores/authStore";
+import { observer } from "mobx-react";
 
 // Styling Components
 import { Image, TextInput, TouchableOpacity, View } from "react-native";
@@ -7,6 +9,15 @@ import { Text } from "native-base";
 import styles from "./styles";
 
 class Login extends Component {
+  state = {
+    username: "",
+    password: ""
+  };
+
+  handlePress = () => {
+    authStore.loginUser(this.state, this.props.navigation);
+  };
+
   render() {
     return (
       <View style={styles.authContainer}>
@@ -15,17 +26,16 @@ class Login extends Component {
           style={styles.authTextInput}
           placeholder="Username"
           placeholderTextColor="#A6AEC1"
+          onChangeText={value => this.setState({ username: value })}
         />
         <TextInput
           style={styles.authTextInput}
           placeholder="Password"
           placeholderTextColor="#A6AEC1"
           secureTextEntry={true}
+          onChangeText={value => this.setState({ password: value })}
         />
-        <TouchableOpacity
-          style={styles.authButton}
-          onPress={() => this.props.navigation.navigate("ListScreen")}
-        >
+        <TouchableOpacity style={styles.authButton} onPress={this.handlePress}>
           <Text style={styles.authButtonText}>Log in</Text>
         </TouchableOpacity>
         <Text
@@ -43,4 +53,4 @@ Login.navigationOptions = {
   title: "Login"
 };
 
-export default Login;
+export default observer(Login);
