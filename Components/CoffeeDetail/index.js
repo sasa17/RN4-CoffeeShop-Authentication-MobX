@@ -45,10 +45,13 @@ class CoffeeDetail extends Component {
   handleAdd = () => {
     authStore.user
       ? cartStore.addItemToCart(this.state)
-      : Alert.alert("Unauthorized", "Please Login", [
+      : Alert.alert("You shall not pass!", "Please Login", [
           {
-            text: "Login",
+            text: "Yes!",
             onPress: () => this.props.navigation.navigate("Login")
+          },
+          {
+            text: "I don't wanna"
           }
         ]);
   };
